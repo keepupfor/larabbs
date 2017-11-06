@@ -40,7 +40,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ route('logout') }}"
+                                    <a href="javascript:;"
                                        onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                         退出登录
