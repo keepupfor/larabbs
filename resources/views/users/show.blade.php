@@ -11,7 +11,8 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="300px" height="300px">
+                            <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="300px"
+                                 height="300px">
                         </div>
                         <div class="media-body">
                             <hr>
@@ -29,7 +30,8 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                 <span>
-                    <h1 class="panel-title pull-left" style="font-size:30px;">{{ $user->name }} <small>{{ $user->email }}</small></h1>
+                    <h1 class="panel-title pull-left" style="font-size:30px;">{{ $user->name }}
+                        <small>{{ $user->email }}</small></h1>
                 </span>
                 </div>
             </div>
@@ -38,11 +40,17 @@
             {{-- 用户发布的内容 --}}
             <div class="panel panel-default">
                 <div class="panel-body">
-                   <ul class="nav nav-tabs">
-                       <li class="active"><a href="">Ta的话题</a></li>
-                       <li class=""><a href="">Ta的回复</a></li>
-                   </ul>
-                 @include('users._topics',['topics'=>$user->topics()->recent()->paginate(5)])
+                    <ul class="nav nav-tabs">
+                        <li class="{{ active_class(if_query('tab',null)) }}"><a
+                                    href="{{ route('users.show',$user->id) }}">Ta的话题</a></li>
+                        <li class="{{ active_class(if_query('tab','replies')) }}"><a
+                                    href="{{ route('users.show',[$user->id,'tab'=>'replies']) }}">Ta的回复</a></li>
+                    </ul>
+                    @if(if_query('tab','replies'))
+                        @include('users._replies',['replies'=>$user->replies()->with('topic')->recent()->paginate(5)])
+                    @else
+                        @include('users._topics',['topics'=>$user->topics()->recent()->paginate(5)])
+                    @endif
                 </div>
             </div>
 
