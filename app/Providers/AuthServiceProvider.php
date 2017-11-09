@@ -30,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        \Horizon::auth(function ($request){
+            return \Auth::user()->hasRole('Founder');
+        });
     }
 }
