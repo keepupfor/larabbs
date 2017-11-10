@@ -28,6 +28,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
          $schedule->command('larabbs:calculate-active-user')
                   ->hourly();
+        $schedule->command('larabbs:calculate-active-user')->dailyAt('00:00');
     }
 
     /**

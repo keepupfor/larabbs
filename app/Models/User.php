@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActivedAtHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use  Auth;
@@ -15,6 +16,7 @@ class User extends Authenticatable
         notify as protected laravelNotify;
     }
     use ActiveUserHelper;
+    use LastActivedAtHelper;
   public function notify($instance)
   {
       if ($this->id==Auth::id()){
