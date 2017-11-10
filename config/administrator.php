@@ -48,7 +48,8 @@ return array(
             'replies',
         ],
         '站点设置'=>[
-            'settings.site'
+            'settings.site',
+            'links'
         ]
     ],
 
