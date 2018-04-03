@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28fa8102f96eaf00c7e890afcf1ae5d7",
-    "content-hash": "73569d9eb34c619d710e7e45ff5a5043",
+    "hash": "73ff01dd1c5e8ba1b4a9d33f3560ce8d",
+    "content-hash": "dfc5d19eec659415eb760cbcceb75af6",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -1769,6 +1769,47 @@
                 "php"
             ],
             "time": "2018-02-28 20:30:58"
+        },
+        {
+            "name": "overtrue/easy-sms",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/easy-sms.git",
+                "reference": "cfa8a122a44d2a9c2ae5e7608f80b9eca2fd1496"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/overtrue/easy-sms/cfa8a122a44d2a9c2ae5e7608f80b9eca2fd1496.zip",
+                "reference": "cfa8a122a44d2a9c2ae5e7608f80b9eca2fd1496",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "mockery/mockery": "1.0.x-dev",
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\EasySms\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "i@overtrue.me"
+                }
+            ],
+            "description": "The easiest way to send short message.",
+            "time": "2018-01-27 02:48:21"
         },
         {
             "name": "overtrue/laravel-lang",
