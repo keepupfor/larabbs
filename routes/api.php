@@ -17,13 +17,19 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-$api=app('Dingo\Api\Routing\Router');
+$api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1',[
-    'namespace'=>'App\Http\Controllers\Api'
-],function ($api){
-   //短信验证码
-    $api->post('verificationCodes','VerificationCodesController@store')
-        ->name('api.verificationCodes.store');
-    $api->post('users','UserController@store')->name('api.users.store');
+$api->version('v1', [
+    'namespace' => 'App\Http\Controllers\Api'
+], function ($api) {
+    $api->group([
+        'middleware' => 'api.throttle',
+        'limit' => config('rate_limits.sign.limit'),
+        'expires' => config('rate_limits.sign.expires'),
+    ], function ($api) {
+            //短信验证码
+            $api->post('verificationCodes', 'VerificationCodesController@store')
+                ->name('api.verificationCodes.store');
+            $api->post('users', 'UserController@store')->name('api.users.store');
+        });
 });
