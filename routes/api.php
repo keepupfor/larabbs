@@ -27,14 +27,22 @@ $api->version('v1', [
         'limit' => config('rate_limits.sign.limit'),
         'expires' => config('rate_limits.sign.expires'),
     ], function ($api) {
-            //短信验证码
-            $api->post('verificationCodes', 'VerificationCodesController@store')
-                ->name('api.verificationCodes.store');
+        //短信验证码
+        $api->post('verificationCodes', 'VerificationCodesController@store')
+            ->name('api.verificationCodes.store');
         //注册
-            $api->post('users', 'UserController@store')->name('api.users.store');
+        $api->post('users', 'UserController@store')->name('api.users.store');
         //图片验证码
-            $api->post('captchas','CaptchasController@store')->name('api.captchas.store');
+        $api->post('captchas', 'CaptchasController@store')->name('api.captchas.store');
         //第三方登录
-           $api->post('socials/{social_type}/authorizations','AuthorizationController@socialStore')->name('api.social.authorizations.store');
-        });
+        $api->post('socials/{social_type}/authorizations', 'AuthorizationController@socialStore')->name('api.social.authorizations.store');
+        //登录
+        $api->post('authorizations', 'AuthorizationController@store')->name('api.authorization.store');
+        // 刷新token
+        $api->put('authorizations/current', 'AuthorizationController@update')
+            ->name('api.authorizations.update');
+        // 删除token
+        $api->delete('authorizations/current', 'AuthorizationController@destroy')
+            ->name('api.authorizations.destroy');
+    });
 });
