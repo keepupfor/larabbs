@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Link;
 use App\Observers\LinkObserver;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,5 +35,12 @@ class AppServiceProvider extends ServiceProvider
         {
             $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
         }
+
+        \API::error(function (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+            abort(404);
+        });
+        \API::error(function (AuthorizationException $exception) {
+            abort(403,$exception->getMessage());
+        });
     }
 }
