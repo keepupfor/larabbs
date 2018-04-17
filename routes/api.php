@@ -47,8 +47,14 @@ $api->version('v1', [
             ->name('api.authorizations.destroy');
         $api->get('categories','CategoriesController@index')->name('api.categories.index');
         $api->get('topics','TopicsController@index')->name('api.topics.index');
+        //某个用户的话题
         $api->get('users/{user}/topics','TopicsController@Userindex')->name('api.topics.userIndex');
         $api->get('topics/{topic}','TopicsController@show')->name('api.topics.show');
+//        话题回复列表
+        $api->get('topics/{topic}/replies','RepliesController@index')->name('api.replies.index');
+        //某个用户的话题回复列表
+        $api->get('users/{user}/replies','RepliesController@userIndex')->name('api.replies.userIndex');
+
         //需要token验证的接口
         $api->group(['middleware'=>'api.auth'],function ($api){
             //当前登录用户信息
