@@ -54,7 +54,8 @@ $api->version('v1', [
         $api->get('topics/{topic}/replies','RepliesController@index')->name('api.replies.index');
         //某个用户的话题回复列表
         $api->get('users/{user}/replies','RepliesController@userIndex')->name('api.replies.userIndex');
-
+        //资源推荐
+        $api->get('links','LinksController@index')->name('api.links.index');
         //需要token验证的接口
         $api->group(['middleware'=>'api.auth'],function ($api){
             //当前登录用户信息
