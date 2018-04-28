@@ -5,7 +5,7 @@
   use League\Fractal\TransformerAbstract;
 
   class UserTransformer extends TransformerAbstract {
-
+protected $availableIncludes=['roles'];
       public function transForm(User $user)
       {
           return[
@@ -21,5 +21,7 @@
               'updated_at' => $user->updated_at->toDateTimeString(),
           ];
       }
-
+   public function includeRoles(User $user){
+       return $this->collection($user->roles,new RoleTransformer());
+   }
   }
