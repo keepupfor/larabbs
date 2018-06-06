@@ -65,7 +65,7 @@ class AuthorizationController extends Controller
             return $this->response->errorUnauthorized(trans('auth.failed'));
         }
 
-        return $this->responseWithToken($token)->setStatusCode(201);;
+        return $this->responseWithToken($token)->setStatusCode(201);
     }
 
     protected function responseWithToken($token)
